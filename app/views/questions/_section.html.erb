@@ -1,0 +1,4 @@
+<h2><%= section.name %></h2>
+<ul>
+  <%= render partial: 'question', collection: section.questions, locals: {section: section} %>
+</ul>

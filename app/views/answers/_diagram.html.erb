@@ -1,0 +1,55 @@
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    var data = <%= @answer.results.to_s.html_safe %>;
+    var radar = new Highcharts.Chart({
+
+        title: {
+          text: null,
+        },
+        chart: {
+            renderTo: 'results',
+            polar: true,
+            type: 'line'
+        },
+
+        xAxis: {
+            categories: <%= Section.all.map(&:name).to_s.html_safe %>,
+            tickmarkPlacement: 'on',
+            lineWidth: 0
+        },
+
+        yAxis: {
+            gridLineInterpolation: 'polygon',
+            lineWidth: 0,
+            tickInterval: 2,
+            min: 0,
+            max: 10
+        },
+        tooltip: {
+          formatter: function() {
+              var s = this.x;
+              $.each(this.points, function(i, point) {
+                  s += ':'+ point.y;
+              });
+
+              return s;
+          },
+          shared: true
+        },
+
+        legend:{
+          enabled: false
+        },
+
+
+        series: [{
+            name: '',
+            data: data,
+            pointPlacement: 'on'
+        }]
+
+    });
+  });
+</script>
+<div style="hight: 500px; width: 500px" id="results">
+</div>

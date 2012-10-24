@@ -1,0 +1,9 @@
+<li>
+  <p><%= question.content %>
+  <% ['Yes', 'No', 'Not Applicable'].each do |variant| %>
+    <% dom_id = question.id.to_s + '_' << variant.parameterize %>
+    <%= label_tag dom_id, variant %>
+    <%= radio_button_tag "answers[#{section.id}][#{question.id}]", variant == 'Yes' ? 1 : 0, false, id: dom_id %>
+  <% end %>
+  </p>
+</li>

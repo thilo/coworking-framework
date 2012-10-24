@@ -1,0 +1,5 @@
+<h1>Thank you!</h1>
+<p>Here is how you are doing!</p>
+<%= render "diagram" %>
+<p>Here is your result link:</p>
+<%= url_for action: :show, controller: :answers, id: @answer.secret, only_path: false %>
