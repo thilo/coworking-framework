@@ -11,6 +11,9 @@
             polar: true,
             type: 'line'
         },
+        credits:{
+          enabled: false
+        },
 
         xAxis: {
             categories: <%= Section.all.map(&:name).to_s.html_safe %>,
